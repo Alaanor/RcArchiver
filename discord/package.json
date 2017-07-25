@@ -1,0 +1,20 @@
+{
+  "name": "RcArchiver",
+  "version": "0.0.1",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chalk": "^2.0.1",
+    "discord-akairo": "^7.4.2",
+    "discord.js": "^11.1.0",
+    "es6-enum": "^1.1.0",
+    "hashids": "^1.1.1",
+    "jsdom": "^11.1.0",
+    "linq-es6": "^0.2.1",
+    "moment": "^2.18.1",
+    "node-cleanup": "^2.1.2",
+    "phantom": "^4.0.4",
+    "rethinkdbdash": "^2.3.29",
+    "shortid": "^2.2.8",
+    "uuid": "^3.1.0"
+  }
+}
