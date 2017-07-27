@@ -15,7 +15,7 @@ class RcArchiver {
         ];
     }
 
-    Analyze(guildId, msg){
+    Analyze(guildId, msg, icon, note){
         let db = new RcDbAccess(guildId);
         let driver = this.driver.asEnumerable()
             .firstOrDefault(d => d.GetLink(msg) !== undefined);
@@ -29,6 +29,8 @@ class RcArchiver {
             return Promise.resolve(TRc.State.None);
 
         return promise.then(rc => {
+            rc.setIcon(icon.toString());
+            rc.setNote(note);
             db.AddEntry(rc);
             return rc;
         });
