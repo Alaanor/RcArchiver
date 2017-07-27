@@ -1,6 +1,28 @@
 {
   "name": "rc-archiver",
   "version": "1.0.0",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chalk": "^2.0.1",
+    "discord-akairo": "^7.4.2",
+    "discord.js": "^11.1.0",
+    "es6-enum": "^1.1.0",
+    "hashids": "^1.1.1",
+    "jsdom": "^11.1.0",
+    "linq-es6": "^0.2.1",
+    "moment": "^2.18.1",
+    "node-cleanup": "^2.1.2",
+    "phantom": "^4.0.4",
+    "rethinkdbdash": "^2.3.29",
+    "shortid": "^2.2.8",
+    "uuid": "^3.1.0",
+    "load-grunt-tasks": "^3.5.2",
+    "request": "latest",
+    "time-grunt": "^1.4.0",
+    "vue": "^2.3.3",
+    "vue-material": "^0.7.4",
+    "vue-router": "^2.6.0"
+  },
   "description": "RcArchiver web app",
   "author": "Maxime Bonvin <max.bonvin@gmail.com>",
   "private": true,
@@ -8,12 +30,6 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js"
-  },
-  "dependencies": {
-    "express-vue": "^3.15.1",
-    "vue": "^2.3.3",
-    "vue-material": "^0.7.4",
-    "vue-router": "^2.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
