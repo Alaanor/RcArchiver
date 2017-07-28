@@ -34,7 +34,8 @@ module.exports = new Command('add', exec, {
         {id: 'icon', type: 'emoji'},
         {id: 'note', prompt: {
             start: "Tu veux ajouter des notes sur cette entrée ?"+
-                "\n - non pour annuler"
+                "\n - non pour annuler",
+            time: 90000
         }}
     ]
 });

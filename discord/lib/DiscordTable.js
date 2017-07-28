@@ -16,6 +16,15 @@ class DiscordShowTable {
             DiscordEmbedUtils.ShowMultipleTRc(channel, 0x6DC066, data);
         }
     }
+
+    static ShowDetailed(channel, rc) {
+        if(rc === undefined || rc === null){
+            DiscordEmbedUtils.showSimple(channel, 0xCC0000, "Mauvais id, jtrouve rien dans la db :/");
+            return;
+        }
+
+        DiscordEmbedUtils.ShowOneTRc(channel, 0x6DC066, TRc.FromJson(rc));
+    }
 }
 
 module.exports = DiscordShowTable;
