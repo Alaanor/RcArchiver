@@ -61,7 +61,18 @@ class RcDbAccess {
     }
 
     GetLast(limit, skip) {
-        return r.table(this.table).skip(skip).limit(limit);
+        return r.table(this.table)
+            .orderBy(r.desc('dateAdd'))
+            .skip(skip)
+            .limit(limit);
+    }
+
+    GetFromId(id) {
+        return r.table(this.table).get(id);
+    }
+
+    CountRc() {
+        return r.table(this.table).count();
     }
 }
 

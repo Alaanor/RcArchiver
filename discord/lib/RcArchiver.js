@@ -29,6 +29,10 @@ class RcArchiver {
             return Promise.resolve(TRc.State.None);
 
         return promise.then(rc => {
+            if(rc === TRc.State.Error){
+                return rc;
+            }
+
             rc.setIcon(icon.toString());
             rc.setNote(note);
             db.AddEntry(rc);
@@ -198,17 +202,27 @@ class RcTravianReport extends IRcDriver {
                     throw new Error();
                 }
 
-                let players = Object.values(document.getElementsByClassName("new_green do_lewej"))
-                    .map(function (el) {
-                        return el.innerHTML;
-                    });
+                let players;
+
+                if(document.querySelector("td.pomarancz[colspan]") === null){
+                    players = Object.values(document.getElementsByClassName("new_green do_lewej"))
+                        .map(function (el) {
+                            return el.innerHTML;
+                        });
+                } else {
+                    players = [
+                        document.querySelector("td.pomarancz[colspan]").innerHTML,
+                        document.querySelector("td.zielony[colspan]").innerHTML
+                    ]
+                }
+
                 let date = document.querySelectorAll("td.do_lewej[colspan='2']");
 
                 return {players: players, date: date}
             })
             .then(data => {
                 data.players = Object.values(data.players)
-                    .map(html => /\[(.*)] (.*) <span.*span> (.*)/g.exec(html).slice(1,3));
+                    .map(html => /\[(.*)] (.*) <span.*span> (.*)/g.exec(html).slice(1,4));
 
                 data.date = data.date[0].innerHTML;
 

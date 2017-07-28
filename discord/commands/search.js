@@ -16,7 +16,9 @@ function exec(message, args) {
             searchResult = db.SearchIcon(args.value);
             break;
 
-        case "ally" || "player" || "village":
+        case "ally":
+        case "player":
+        case "village":
             searchResult = db.SearchFromTo(args.type, args.value);
             break;
     }

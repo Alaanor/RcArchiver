@@ -17,6 +17,34 @@ module.exports = {
             fields: fields
         }});
     },
+    ShowOneTRc(channel, color, rc) {
+        let data = rc.getData();
+        channel.send({embed: {
+            color: color,
+            title: `${data.icon} ${data.url}`,
+            fields: [
+                {
+                    name: "Depuis",
+                    value: `**[${data.from.ally}] ${data.from.player}** du village **${data.from.village}**`
+                },
+                {
+                    name: "Vers",
+                    value: `**[${data.to.ally}] ${data.to.player}** du village **${data.to.village}**`
+                },
+                {
+                    name: "Note",
+                    value: data.note || "-"
+                }
+            ],
+            thumbnail: {
+                "url": data.img
+            },
+            image: {
+                "url": data.img
+            },
+        }});
+        console.log(data.img);
+    },
     ShowMultipleTRc(channel, color, rcs){
         let showNote = (rc) => {
             if(rc.getNote() !== "")

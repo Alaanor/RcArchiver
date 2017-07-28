@@ -12,6 +12,10 @@ function exec(message, args) {
             value: "Analyse un rc depuis t-report ou travian-reports"
         },
         {
+            name: "!get <id>",
+            value: "Montre un rc précis"
+        },
+        {
             name: "!search <ally|player|village|note|icon> <regex>",
             value: "Recherche de rc via [regex](https://www.rethinkdb.com/api/javascript/match/)"
         },
@@ -20,12 +24,16 @@ function exec(message, args) {
             value: "Montre les derniers rc ajouter"
         },
         {
-            name: "!edit <id> <value>",
+            name: "!edit <id>",
             value: "Modifie les notes d'une entrée."
         },
         {
             name: "!delete <id>",
             value: "Delete un rc de la db via son id"
+        },
+        {
+            name: "!stats",
+            value: "Montre quelques info :D"
         }
     ]);
 }
