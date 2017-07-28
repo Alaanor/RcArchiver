@@ -1,6 +1,6 @@
 {
   "name": "rc-archiver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dev": false,
   "dependencies": {
     "bluebird": "^3.5.0",
