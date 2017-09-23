@@ -19,14 +19,25 @@ class DiscordShowTable {
             if (data.length <= 10) {
                 DiscordEmbedUtils.ShowMultipleTRc(channel, 0x6DC066, data);
             } else {
-                message.reply(`Il y a ${data.length} Rc trouvé, tu souhaite vraiment tous les afficher ?\n - \`Oui\` pour tous les afficher`);
+                message.reply(
+                    `Il y a ${data.length} Rc trouvé, tu souhaite vraiment tous les afficher ?` +
+                    `\n - \`Oui\` pour tous les afficher` +
+                    `\n - \`Chiffre\` pour afficher les x dernière entrée`
+                );
 
-                let filter = m => m.author === message.author && m.content.toLowerCase() === "oui";
+                let filter = m => m.author === message.author &&
+                    (m.content.toLowerCase() === "oui" || m.content.match("^[0-9]*$") !== null);
                 let option = {max: 1, time: 1e3 * 60 * 3, errors: ['time']};
 
                 channel
                     .awaitMessages(filter, option)
-                    .then(ignored => this.ShowByMultipleChunk(data, channel))
+                    .then(m => {
+                        m = m.first();
+                        if(m.content.toLowerCase() === "oui")
+                            this.ShowByMultipleChunk(data, channel);
+                        else
+                            this.ShowByMultipleChunk(data.slice(0, parseInt(m.content)), channel);
+                    })
                     .catch(ignored => {});
             }
         }

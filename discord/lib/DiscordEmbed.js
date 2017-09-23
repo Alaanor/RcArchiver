@@ -1,3 +1,5 @@
+const dateFormatter = require('./DateFormatter');
+
 module.exports = {
     showSimple(channel, color, message) {
         channel.send({ embed: {
@@ -32,6 +34,16 @@ module.exports = {
                     value: `**[${data.to.ally}] ${data.to.player}** du village **${data.to.village}**`
                 },
                 {
+                    name: "Date du Rc",
+                    value: dateFormatter.unixToString(rc.getDateRc()),
+                    inline: true
+                },
+                {
+                    name: "Date de l'ajout",
+                    value: dateFormatter.unixToString(rc.getDateAdd()),
+                    inline: true
+                },
+                {
                     name: "Note",
                     value: data.note || "-"
                 }
@@ -52,12 +64,14 @@ module.exports = {
             return "";
         };
 
+        let showDate = (rc) => `\n${dateFormatter.unixToString(rc.getDateAdd())}`;
+
         let embed = {
             color: color,
             fields: rcs.map(rc => {
                 return {
                     name: `${rc.getIcon()} ${rc.getQuickName()} (${rc.getId()})`,
-                    value: `${rc.getUrl()}${showNote(rc)}`
+                    value: `${rc.getUrl()} ${showDate(rc)} ${showNote(rc)}`
                 };
             }),
         };
