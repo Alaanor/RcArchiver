@@ -6,7 +6,7 @@ const DiscordEmbed = require('../lib/DiscordEmbed');
 function exec(message, args) {
     let db = new RcDbAccess(message.guild.id);
     db.GetLast(args.limit, args.skip)
-        .then(data => DiscordTable.Show(message.channel, data));
+        .then(data => DiscordTable.Show(message, data));
 }
 
 module.exports = new Command('last', exec, {

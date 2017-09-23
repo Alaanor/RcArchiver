@@ -24,7 +24,7 @@ function exec(message, args) {
     }
 
     searchResult.then(data =>
-        DiscordTable.Show(message.channel, data)
+        DiscordTable.Show(message, data)
     );
 }
 

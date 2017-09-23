@@ -45,21 +45,26 @@ module.exports = {
         }});
         console.log(data.img);
     },
-    ShowMultipleTRc(channel, color, rcs){
+    ShowMultipleTRc(channel, color, rcs, pageIndex = -1, pageMax = -1){
         let showNote = (rc) => {
             if(rc.getNote() !== "")
                 return `\nNote: ${rc.getNote()}`;
             return "";
         };
 
-        channel.send({ embed: {
+        let embed = {
             color: color,
             fields: rcs.map(rc => {
                 return {
                     name: `${rc.getIcon()} ${rc.getQuickName()} (${rc.getId()})`,
                     value: `${rc.getUrl()}${showNote(rc)}`
                 };
-            })
-        }});
+            }),
+        };
+
+        if(pageIndex !== -1 && pageMax !== -1)
+            embed.footer = { text: `Page ${pageIndex}/${pageMax}` };
+
+        channel.send({ embed: embed });
     }
 };
