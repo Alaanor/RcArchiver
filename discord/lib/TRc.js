@@ -27,6 +27,14 @@ class TRc {
         return this.data.id;
     }
 
+    getDateAdd(){
+        return this.data.dateAdd;
+    }
+
+    getDateRc(){
+        return parseInt(this.data.dateRc)*1000; //unix timestamp in sec instead of ms
+    }
+
     getIcon(){
         return this.data.icon;
     }
