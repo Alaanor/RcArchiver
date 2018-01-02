@@ -1,16 +1,12 @@
 const { Command } = require('discord-akairo');
 const RcArchiver = require('../lib/RcArchiver');
 const TRc = require("../lib/TRc.js");
-const RcDbAccess = require("../lib/RcDbAccess");
+const RcDbAccess = require("../lib/Db/RcDbAccess");
 const DiscordEmbedUtils = require("../lib/DiscordEmbed");
 
 function exec(message, args) {
-    if(args.note.toLowerCase() === "non"){
-        args.note = "";
-    }
-
     RcArchiver
-        .Analyze(message.guild.id, args.url, args.icon, args.note)
+        .Analyze(message.guild.id, args.url, args.icon)
         .then(rc => {
             if(rc === TRc.State.None)
                 DiscordEmbedUtils.showSimple(message.channel, 0xCC0000,
@@ -31,11 +27,6 @@ module.exports = new Command('add', exec, {
     aliases: ['add'],
     args: [
         {id: 'url', type: 'url'},
-        {id: 'icon', type: 'emoji'},
-        {id: 'note', prompt: {
-            start: "Tu veux ajouter des notes sur cette entrée ?"+
-                "\n - non pour annuler",
-            time: 90000
-        }}
+        {id: 'icon', type: 'emoji'}
     ]
 });

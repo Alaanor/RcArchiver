@@ -1,7 +1,8 @@
-const { AkairoClient } = require('discord-akairo');
+const CustomClient = require('./CustomClient');
 const pckgJson = require('../package.json');
+const token = require('./botToken.json');
 
-const client = new AkairoClient({
+const client = new CustomClient({
     ownerID: "213397906571395072",
     prefix: '!',
     commandDirectory: __dirname + '/commands/',
@@ -9,7 +10,7 @@ const client = new AkairoClient({
 });
 
 if(pckgJson.dev){
-    client.login('MzQwMjUxNzAyMzI4Mjk1NDI1.DFvz_A.lWBwJrsuTMY62vkJdvIo86A6DhA');
+    client.start(token.dev);
 } else {
-    client.login('MzMyMjExNzc1Mjk2NjM0ODgw.DD62GQ.xultA_CU4RxbXQ2BOgPPNfiWonM');
+    client.start(token.prod);
 }

@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-const RcDbAccess = require("../lib/RcDbAccess");
+const RcDbAccess = require("../lib/Db/RcDbAccess");
 const DiscordEmbed = require('../lib/DiscordEmbed');
 
 function exec(message, args) {
