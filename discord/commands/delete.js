@@ -1,7 +1,7 @@
 const { Command } = require('discord-akairo');
 const RcArchiver = require('../lib/RcArchiver');
 const TRc = require("../lib/TRc.js");
-const RcDbAccess = require("../lib/RcDbAccess");
+const RcDbAccess = require("../lib/Db/RcDbAccess");
 const DiscordEmbedUtils = require("../lib/DiscordEmbed");
 
 function exec(message, args) {

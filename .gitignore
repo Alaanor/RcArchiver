@@ -12,3 +12,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 package-lock.json
+
+#secret token
+discord/botToken.json
+
+#data
+discord/data/*

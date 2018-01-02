@@ -1,5 +1,5 @@
-const r = require('rethinkdbdash')({db: "RcArchiver"});
-const TRc = require("./TRc");
+const r = require('./DbAccess');
+const TRc = require("../TRc");
 const shortid = require('shortid');
 
 class RcDbAccess {

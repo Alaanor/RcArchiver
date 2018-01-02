@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-const RcDbAccess = require("../lib/RcDbAccess");
+const RcDbAccess = require("../lib/Db/RcDbAccess");
 const DiscordTable = require('../lib/DiscordTable');
 const DiscordEmbed = require('../lib/DiscordEmbed');
 
